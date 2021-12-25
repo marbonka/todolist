@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd"
+>
+    <preference for="Addonsys\ToDoList\Api\TaskManagementInterface" type="Addonsys\ToDoList\Service\TaskManagement"/>
+    <preference for="Addonsys\ToDoList\Api\TaskRepositoryInterface" type="Addonsys\ToDoList\Service\TaskRepository"/>
+    <preference for="Addonsys\ToDoList\Api\Data\TaskInterface" type="Addonsys\ToDoList\Model\Task"/>
+    <preference for="Addonsys\ToDoList\Api\Data\TaskSearchResultInterface"
+                type="Addonsys\ToDoList\Model\ResourceModel\Task\Collection"/>
+    <preference for="Addonsys\ToDoList\Api\CustomerTaskListInterface"
+                type="Addonsys\ToDoList\Service\CustomerTaskList"/>
+    <preference for="Addonsys\ToDoList\Api\TaskStatusManagementInterface"
+                type="Addonsys\ToDoList\Service\TaskStatusManagement"/>
+
+</config>

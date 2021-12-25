@@ -1,0 +1,60 @@
+<div class="form-container">
+    <input
+        type="text"
+        class="task-input-field"
+        id="todo-task-input"
+        name="task"
+        ko-value="newTaskLabel"
+        placeholder="Add a new task..."
+        data-bind="event: {'keyup': checkKey}"
+    />
+    <!-- Same with = ko-value -> data-bind="value: newTaskLabel"-->
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="button"
+                    Title="Add Task"
+                    class="action save primary"
+                    id="add-new-task-button"
+                    data-bind="click: addTask"
+            >
+                <span>
+                    Add Task
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- ko ifnot: (tasks().length == 0) -->
+<h3>My Tasks</h3>
+<ul class="tasks">
+    <li repeat="foreach: tasks, item: 'task'">
+        <a
+            data-bind="
+            attr:{
+                class: 'status ' + (task().status === 'complete' ? 'complete':'open'),
+                'data-id': task().task_id
+
+            },
+            click: switchStatus
+            "
+            translate="task().label"
+        >
+        </a>
+        <a class="action delete" data-bind="
+            attr:{
+                'data-id': task().task_id
+            },
+            click: deleteTask.bind($data, task().task_id)
+        ">
+            Delete
+        </a>
+    </li>
+</ul>
+<!-- /ko -->
+<!-- ko if: (tasks().length == 0) -->
+<div class="message info empty">
+    <span>
+        There are no open tasks. Add a new one.
+    </span>
+</div>
+<!-- /ko -->

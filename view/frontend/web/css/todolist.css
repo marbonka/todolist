@@ -1,0 +1,100 @@
+ul.tasks {
+    margin-top: 2rem;
+    padding-left: 20px;
+}
+
+ul.tasks li{
+    display: flex;
+}
+
+.form-container{
+    margin: 0 20px 20px 20px;
+    display: flex;
+}
+
+.form-container .task-input-field{
+    max-width: 80%;
+    border-radius: 2px;
+}
+
+.form-container .actions-toolbar {
+    margin-left: 5px;
+}
+
+ul.tasks .delete:hover{
+    cursor: pointer;
+    background-color: #FCE0B6;
+}
+
+ul.tasks .status.complete{
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+ul.tasks li{
+    display: block;
+    margin: 0;
+    padding: 12px 20px 12px 25px;
+    font-size: 1.3rem;
+    color: #006400;
+    padding-left: 45px;
+    position: relative;
+}
+
+ul.tasks a {
+    cursor: pointer;
+}
+
+ul.tasks a.status{
+    color: #575757;
+    display: inline-block;
+    width: 80%;
+}
+
+ul.tasks .status.complete:before{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 24px;
+    line-height: 24px;
+    color: #006400;
+    content: '\e60e';
+    font-family: 'luma-icons';
+    margin: -12px 0 0;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    left: 0;
+    top:22px;
+    width: 45px;
+    position: absolute;
+    text-align: center;
+}
+
+ul.tasks .status.open:before{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 24px;
+    line-height: 24px;
+    color: #ccc;
+    content: '\e601';
+    font-family: 'luma-icons';
+    margin: -12px 0 0;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    left: 0;
+    top:22px;
+    width: 45px;
+    position: absolute;
+    text-align: center;
+}
+
+
+
+
+
+
