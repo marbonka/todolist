@@ -9,6 +9,9 @@
         "constraint": {
             "PRIMARY": true,
             "ADDONSYS_TODOLIST_TASK_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        },
+        "index": {
+            "ADDONSYS_TODOLIST_TASK_LABEL": true
         }
     }
 }

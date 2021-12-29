@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<listing
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd"
+>
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">task_listing.todolist_task_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>todolist_task_listing</spinner>
+        <deps>
+            <dep>task_listing.todolist_task_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource
+        name="todolist_task_listing_data_source"
+        component="Magento_Ui/js/grid/provider"
+    >
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">task_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
+                      name="todolist_task_listing_data_source">
+            <settings>
+                <primaryFieldName>task_id</primaryFieldName>
+                <requestFieldName>task_id</requestFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>
+                true
+            </sticky>
+        </settings>
+        <columnsControls name="columns_controls" />
+        <filters name="listing_filters" />
+        <paging name="paging" />
+        <filterSearch name="fulltext" />
+        <bookmark name="bookmarks">
+        </bookmark>
+    </listingToolbar>
+    <columns name="todolist_task_listing">
+        <column name="task_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="label">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Label</label>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <visible>true</visible>
+                <options>
+                    <option name="0" xsi:type="array">
+                        <item name="value" xsi:type="string">open</item>
+                        <item name="label" xsi:type="string">open</item>
+                    </option>
+                    <option name="1" xsi:type="array">
+                        <item name="value" xsi:type="string">complete</item>
+                        <item name="label" xsi:type="string">complete</item>
+                    </option>
+                </options>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="customer_id" class="Addonsys\ToDoList\Ui\TaskCustomerColumn">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer ID</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+    </columns>
+</listing>

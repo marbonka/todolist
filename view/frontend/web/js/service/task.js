@@ -2,11 +2,11 @@ define(['mage/storage'], function (storage) {
     'use strict';
     return {
         getList: async function () {
-            return await storage.get('rest/V1/customer/todo/tasks');
+            return await storage.get('rest/V1/customer/me/todo/tasks');
         },
         update: async function (taskId, status) {
             return await storage.post(
-                'rest/V1/customer/todo/task/update',
+                'rest/V1/customer/me/todo/task/update',
                 JSON.stringify({
                     taskId: taskId,
                     status: status
@@ -15,7 +15,7 @@ define(['mage/storage'], function (storage) {
         },
         delete: async function (task){
             return await storage.post(
-                'rest/V1/customer/todo/task/delete',
+                'rest/V1/customer/me/todo/task/delete',
                 JSON.stringify({
                     task:task
                 })
@@ -23,7 +23,7 @@ define(['mage/storage'], function (storage) {
         },
         create: async function (task){
             return await storage.post(
-                'rest/V1/customer/todo/task/create',
+                'rest/V1/customer/me/todo/task/create',
                 JSON.stringify({
                     task:task
                 })

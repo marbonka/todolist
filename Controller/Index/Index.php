@@ -2,73 +2,38 @@
 
 namespace Addonsys\ToDoList\Controller\Index;
 
-use Addonsys\ToDoList\Api\TaskManagementInterface;
-use Addonsys\ToDoList\Service\TaskRepository;
-use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Action;
-use Addonsys\ToDoList\Model\Task;
-use Addonsys\ToDoList\Model\ResourceModel\Task as TaskResource;
-use Addonsys\ToDoList\Model\TaskFactory;
 
 class Index extends Action
 {
-
     /**
-     * @var TaskResource
+     * @var Session
      */
-    private $taskResource;
-
-    /**
-     * @var TaskFactory
-     */
-    private $taskFactory;
-
-    /**
-     * @var TaskRepository
-     */
-    private $taskRepository;
-
-    /**
-     * @var SearchCriteriaBuilder
-     */
-    private $searchCriteriaBuilder;
-
-    /**
-     * @var TaskManagementInterface
-     */
-    private $taskManagement;
-
-    /**
-     * @param Context $context
-     * @param TaskFactory $taskFactory
-     * @param TaskResource $taskResource
-     * @param TaskRepository $taskRepository
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param TaskManagementInterface $taskManagement
-     */
+    private $session;
 
     public function __construct(
-        Context               $context,
-        TaskFactory           $taskFactory,
-        TaskResource          $taskResource,
-        TaskRepository        $taskRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        TaskManagementInterface $taskManagement
+        Context $context,
+        Session $session
     )
     {
-        $this->taskFactory = $taskFactory;
-        $this->taskResource = $taskResource;
-        $this->taskRepository = $taskRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->taskManagement = $taskManagement;
+        $this->session = $session;
         parent::__construct($context);
     }
 
     public function execute()
     {
+        if(!$this->session->isLoggedIn()){
+            /**
+             * @var Redirect $redirect
+             */
+            $redirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+            $redirect->setPath('customer/account/login');
+            return $redirect;
+        }
        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }

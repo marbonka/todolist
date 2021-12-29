@@ -12,10 +12,11 @@ use Addonsys\ToDoList\Api\Data\TaskInterface;
 interface TaskManagementInterface{
 
     /**
+     * @param int $customerId
      * @param TaskInterface $task
      * @return int
      */
-    public function save(TaskInterface $task): int;
+    public function save(int $customerId, TaskInterface $task): int;
 
     /**
      * @param TaskInterface $task

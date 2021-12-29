@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd" >
+    <menu>
+        <add
+            id="Addonsys_ToDoList::todo"
+            title="Addonsys"
+            module="Addonsys_ToDoList"
+            sortOrder="100"
+            parent="Magento_Customer::customer"
+            resource="Magento_Customer::customer"
+        />
+        <add
+            id="Addonsys_Todolist::todo_task"
+            title="To-Do-List"
+            module="Addonsys_ToDoList"
+            sortOrder="110"
+            action="todolist/task/index"
+            parent="Addonsys_ToDoList::todo"
+            resource="Magento_Customer::customer"
+        />
+    </menu>
+</config>

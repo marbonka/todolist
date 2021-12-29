@@ -12,5 +12,27 @@
                 type="Addonsys\ToDoList\Service\CustomerTaskList"/>
     <preference for="Addonsys\ToDoList\Api\TaskStatusManagementInterface"
                 type="Addonsys\ToDoList\Service\TaskStatusManagement"/>
-
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="AddonsysTodoTaskList" xsi:type="object">Addonsys\ToDoList\Command\ListTasksCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="todolist_task_listing_data_source" xsi:type="string">ToDoListTaskSearchResult</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType
+        name="ToDoListTaskSearchResult"
+        type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">addonsys_todolist_task</argument>
+            <argument name="resourceModel" xsi:type="string">Addonsys\ToDoList\Model\ResourceModel\Task</argument>
+            <argument name="identifierName" xsi:type="string">task_id</argument>
+        </arguments>
+    </virtualType>
 </config>

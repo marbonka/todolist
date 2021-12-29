@@ -24,12 +24,11 @@ class TaskManagement implements TaskManagementInterface
     }
 
     /**
-     * @param TaskInterface $task
-     * @return int
-     * @throws AlreadyExistsException
+     * @inheritDoc
      */
-    public function save(TaskInterface $task): int
+    public function save(int $customerId,TaskInterface $task): int
     {
+        $task->setData('customer_id',$customerId);
         $this->resource->save($task);
         return $task->getTaskId();
     }

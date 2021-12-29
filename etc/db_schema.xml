@@ -47,5 +47,8 @@
                 referenceColumn="entity_id"
                 onDelete="CASCADE"
             />
+            <index referenceId="ADDONSYS_TODOLIST_TASK_LABEL" indexType="fulltext">
+                <column name="label" />
+            </index>
         </table>
 </schema>
